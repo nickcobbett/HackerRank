@@ -1,23 +1,15 @@
 var connectedCells = (matrix) => {
-  // visited switch
   var visited = {};
 
   var maxCount = 0;
-  // var count = 0;
 
   var search = (i, k) => {
-    // look at current location
-    var visitedKey = JSON.stringify(i) + ', ' + JSON.stringify(k);
-    // console.log(visitedKey)
-    // console.log(visited)
-    // console.log('matrix', matrix)
+    var visitedKey = i.toString() + ',' + k.toString();
+
     if (matrix[i]!== undefined && matrix[i][k] !== undefined) {
-      if (matrix[i][k] === 1 && !visited[visitedKey]) {
+      if (matrix[i][k] === 1 && !visited[visitedKey]) { // look at current location
         visited[visitedKey] = true;
         count++;
-        // console.log('inner', count)
-        // console.log('i', i)
-        // console.log('k', k)
         search(i, k - 1); // look left
         search(i, k + 1); // look right
         search(i - 1, k); // look up
@@ -32,13 +24,11 @@ var connectedCells = (matrix) => {
 
   for (var i = 0; i < matrix.length; i++) {
     for (var k = 0; k < matrix[i].length; k++) {
-      count = 0;
+      var count = 0;
       search(i, k);
-      // console.log('count', count);
       maxCount = Math.max(maxCount, count);
     }
   }
-
   return maxCount;
 };
 

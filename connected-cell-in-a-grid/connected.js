@@ -6,7 +6,7 @@ var connectedCells = (matrix) => {
   var search = (i, k) => {
     var visitedKey = i.toString() + ',' + k.toString();
 
-    if (matrix[i]!== undefined && matrix[i][k] !== undefined) {
+    if (matrix[i] !== undefined && matrix[i][k] !== undefined) {
       if (matrix[i][k] === 1 && !visited[visitedKey]) { // look at current location
         visited[visitedKey] = true;
         count++;
